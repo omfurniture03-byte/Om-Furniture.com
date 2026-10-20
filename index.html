@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Furniture | Ultra Luxury Woodwork & Fine Bespoke Furniture (Estd. 1997)</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            400: '#f3e5ab',
+                            500: '#d4af37',
+                            600: '#aa820a',
+                            700: '#856404',
+                        },
+                        amberbg: '#0f0d0b',
+                        cardbg: '#181512',
+                        cardborder: '#2a241e'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- GSAP & ScrollTrigger Animation Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        body {
+            background-color: #0f0d0b;
+            color: #e5e5e5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Gold Gradient Text Utility */
+        .text-gold-gradient {
+            background: linear-gradient(135deg, #fce8a6 0%, #d4af37 50%, #856404 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #ebd07b 0%, #d4af37 50%, #997813 100%);
+        }
+
+        .border-gold-gradient {
+            border-image: linear-gradient(to right, #d4af37, #4a3b10) 1;
+        }
+
+        /* Floating particles canvas style */
+        #particles-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Glow effects */
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
+        }
+        .gold-glow-lg {
+            box-shadow: 0 0 45px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Pulsing animation for action buttons */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .pulse-whatsapp {
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseCallGlow {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        .pulse-call {
+            animation: pulseCallGlow 2s infinite 0.5s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f0d0b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a241e;
+            border-radius: 4px;
+            border: 1px solid #d4af37;
+        }
+    </style>
+</head>
+<body class="selection:bg-gold-500 selection:text-black">
+
+    <!-- FLOATING STICKY ACTION CONTROLS (RIGHT SIDE) -->
+    <div class="fixed right-4 bottom-6 z-50 flex flex-col items-end space-y-4">
+        <!-- Direct Call Floating Button -->
+        <a href="tel:9871050579" class="group relative flex items-center justify-center w-14 h-14 bg-gradient-to-r from-amber-600 to-gold-500 rounded-full text-black text-2xl shadow-2xl transition-all duration-300 hover:scale-110 pulse-call">
+            <i class="fa-solid fa-phone-flip"></i>
+            <span class="absolute right-16 top-1/2 -translate-y-1/2 bg-black/90 text-gold-400 border border-gold-500/40 text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl pointer-events-none">
+                Call Direct: 9871050579
+            </span>
+        </a>
+
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919871050579?text=Hello%20Om%20Furniture!%20I%20am%20interested%20in%20your%20custom%20luxury%20furniture." target="_blank" class="group relative flex items-center justify-center w-14 h-14 bg-emerald-500 rounded-full text-white text-3xl shadow-2xl transition-all duration-300 hover:scale-110 pulse-whatsapp">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span class="absolute right-16 top-1/2 -translate-y-1/2 bg-black/90 text-emerald-400 border border-emerald-500/40 text-xs font-semibold px-3 py-1.5 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl pointer-events-none">
+                Instant WhatsApp Quote
+            </span>
+        </a>
+    </div>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-amberbg/85 backdrop-blur-md border-b border-gold-500/20 transition-all duration-300" id="mainNav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-11 h-11 rounded-full bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 p-[2px] shadow-lg group-hover:rotate-12 transition-transform duration-500">
+                    <div class="w-full h-full bg-amberbg rounded-full flex items-center justify-center">
+                        <span class="font-serif text-2xl font-bold text-gold-400">OM</span>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif text-2xl font-bold tracking-wider text-gold-gradient">OM FURNITURE</span>
+                    <span class="text-[10px] tracking-[0.25em] text-amber-200/60 uppercase -mt-1">Crafting Royalty Since 1997</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#about" class="text-gray-300 hover:text-gold-400 transition-colors">Our Legacy</a>
+                <a href="#collection" class="text-gray-300 hover:text-gold-400 transition-colors">Furniture Collection</a>
+                <a href="#estimator" class="text-gray-300 hover:text-gold-400 transition-colors">Bespoke Estimator</a>
+                <a href="#factory" class="text-gray-300 hover:text-gold-400 transition-colors">Factory Direct</a>
+                <a href="#faq" class="text-gray-300 hover:text-gold-400 transition-colors">FAQ</a>
+            </div>
+
+            <!-- Call to Action Buttons -->
+            <div class="hidden sm:flex items-center space-x-4">
+                <button onclick="openBookingModal()" class="px-5 py-2.5 rounded-full border border-gold-500/50 text-gold-400 hover:bg-gold-500 hover:text-black transition-all duration-300 font-semibold text-xs tracking-wider uppercase shadow-md">
+                    <i class="fa-regular fa-calendar-check mr-2"></i>Book Visit
+                </button>
+                <a href="tel:9871050579" class="px-5 py-2.5 rounded-full bg-gold-gradient text-black font-bold text-xs tracking-wider uppercase hover:shadow-lg hover:shadow-gold-500/20 transition-all duration-300">
+                    <i class="fa-solid fa-phone mr-2"></i>9871050579
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menuBtn" class="lg:hidden text-gold-400 text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-cardbg border-b border-gold-500/20 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-gray-200 hover:text-gold-400 font-medium" onclick="toggleMobileMenu()">Our Legacy</a>
+            <a href="#collection" class="block text-gray-200 hover:text-gold-400 font-medium" onclick="toggleMobileMenu()">Furniture Collection</a>
+            <a href="#estimator" class="block text-gray-200 hover:text-gold-400 font-medium" onclick="toggleMobileMenu()">Bespoke Estimator</a>
+            <a href="#factory" class="block text-gray-200 hover:text-gold-400 font-medium" onclick="toggleMobileMenu()">Factory Direct</a>
+            <a href="#faq" class="block text-gray-200 hover:text-gold-400 font-medium" onclick="toggleMobileMenu()">FAQ</a>
+            <div class="pt-4 border-t border-gray-800 flex flex-col gap-3">
+                <button onclick="openBookingModal(); toggleMobileMenu();" class="w-full py-3 rounded-xl border border-gold-500 text-gold-400 font-semibold text-xs uppercase">
+                    Book Showroom Visit
+                </button>
+                <a href="tel:9871050579" class="w-full py-3 rounded-xl bg-gold-gradient text-center text-black font-bold text-xs uppercase">
+                    Call 9871050579
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION WITH PARALLAX & PARTICLES -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden border-b border-gold-500/20">
+        <!-- Floating Particle Canvas -->
+        <canvas id="particles-canvas"></canvas>
+
+        <!-- Dynamic Dark Background Layer -->
+        <div class="absolute inset-0 bg-gradient-to-b from-amberbg via-amberbg/90 to-amberbg z-0"></div>
+        
+        <!-- Subtle Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gold-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+            <!-- Badge -->
+            <div class="hero-anim inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-cardbg/80 border border-gold-500/30 text-gold-400 text-xs font-semibold uppercase tracking-widest mb-8 shadow-xl">
+                <i class="fa-solid fa-crown text-xs text-gold-400"></i>
+                <span>Direct In-House Manufacturing • Estd. 1997</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="hero-anim font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-none mb-8">
+                Bespoke Luxury Woodwork <br>
+                <span class="text-gold-gradient italic font-light">Crafted for Generations</span>
+            </h1>
+
+            <p class="hero-anim text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed mb-10">
+                Experience unparalleled teakwood artistry, solid Italian marble craftsmanship, and customized royal upholstery directly from our master workshop. Zero middlemen commissions.
+            </p>
+
+            <!-- Buttons -->
+            <div class="hero-anim flex flex-col sm:flex-row items-center justify-center gap-5">
+                <a href="#collection" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gold-gradient text-black font-bold text-sm tracking-wider uppercase hover:scale-105 transition-transform duration-300 shadow-2xl gold-glow flex items-center justify-center">
+                    <span>Explore Royal Collection</span>
+                    <i class="fa-solid fa-arrow-right-long ml-3"></i>
+                </a>
+                <a href="https://wa.me/919871050579?text=Hello%20Om%20Furniture!%20I%20would%20like%20to%20request%20a%20factory%20quote." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-cardbg/90 border border-gold-500/40 text-gold-300 font-semibold text-sm tracking-wider uppercase hover:border-gold-400 hover:text-white transition-all duration-300 flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 text-lg mr-2.5"></i>
+                    Get Wholesale Quote
+                </a>
+            </div>
+
+            <!-- Trust Highlights -->
+            <div class="hero-anim grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 pt-10 border-t border-gold-500/15 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <span class="block font-serif text-3xl font-bold text-gold-400">27+ Years</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mt-1 block">Master Heritage</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-serif text-3xl font-bold text-gold-400">100% Solid</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mt-1 block">Grade-A Teak Wood</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-serif text-3xl font-bold text-gold-400">0% Middlemen</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mt-1 block">Factory Outlet Rates</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-serif text-3xl font-bold text-gold-400">Customized</span>
+                    <span class="text-xs text-gray-400 uppercase tracking-widest mt-1 block">To Your Exact Dimensions</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER SPOTLIGHT SECTION (NO HUMAN PHOTO - ROYAL EMBLEM ONLY) -->
+    <section id="about" class="py-24 bg-cardbg/50 relative border-b border-gold-500/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Royal Emblem / Badge Icon -->
+                <div class="lg:col-span-5 flex justify-center gsap-reveal">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-gold-700 via-amber-500 to-gold-300 p-[3px] gold-glow shadow-2xl flex items-center justify-center">
+                        <div class="w-full h-full bg-amberbg rounded-full flex flex-col items-center justify-center p-8 text-center border border-gold-500/30">
+                            <!-- Royal Crest Icon -->
+                            <div class="w-24 h-24 mb-4 text-gold-400 flex items-center justify-center border-2 border-gold-500/40 rounded-full bg-cardbg shadow-inner">
+                                <i class="fa-solid fa-shield-halved text-5xl text-gold-400"></i>
+                            </div>
+                            <span class="font-serif text-2xl font-bold text-gold-400">ESTD. 1997</span>
+                            <span class="text-xs tracking-widest text-gray-400 uppercase mt-1">Royal Seal of Quality</span>
+                            <div class="w-16 h-[2px] bg-gold-500/50 my-3"></div>
+                            <span class="text-xs text-amber-200/70 italic">Om Furniture Craftsmanship</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:col-span-7 space-y-6 gsap-reveal">
+                    <div class="inline-flex items-center space-x-2 text-gold-400 text-xs font-semibold uppercase tracking-widest">
+                        <i class="fa-solid fa-gem"></i>
+                        <span>Founder's Vision</span>
+                    </div>
+
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+                        Founded by <span class="text-gold-gradient">Mr. Mohit Jain</span>
+                    </h2>
+
+                    <p class="text-gray-300 leading-relaxed font-light text-base sm:text-lg">
+                        Since establishing <strong class="text-white font-semibold">Om Furniture in 1997</strong>, Mr. Mohit Jain envisioned a sanctuary where woodworking isn't merely manufactured—it is meticulously sculpted into family heirlooms. Over nearly three decades, our workshop in Faridabad has stayed committed to traditional joinery, premium seasoned teakwood, and uncompromising hand-finish luxury.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-gold-500/20">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-check-circle text-gold-400 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Direct Factory Rates</h4>
+                                <p class="text-xs text-gray-400">Eliminating showroom markup costs for optimal value.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-check-circle text-gold-400 mt-1"></i>
+                            <div>
+                                <h4 class="text-white font-semibold text-sm">Tailored Royal Designs</h4>
+                                <p class="text-xs text-gray-400">Customized fabrics, dimensions, and polish shades.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <a href="tel:9871050579" class="inline-flex items-center space-x-3 px-6 py-3 rounded-full bg-cardbg border border-gold-500/50 text-gold-300 hover:text-white hover:border-gold-400 transition-all text-sm font-semibold">
+                            <i class="fa-solid fa-phone text-gold-400"></i>
+                            <span>Speak Direct to Workshop: 9871050579</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PURE FURNITURE SHOWCASE (SEARCH & FILTER + POPUP MODAL) -->
+    <section id="collection" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 gsap-reveal">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-widest">Pure Masterpiece Portfolio</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
+                    Curated Luxury Furniture Collection
+                </h2>
+                <div class="w-24 h-[2px] bg-gold-gradient mx-auto my-4"></div>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    Click any item to inspect material specifications, timber grade, and request an instant wholesale price quote.
+                </p>
+            </div>
+
+            <!-- Search & Filter Bar -->
+            <div class="mb-12 flex flex-col md:flex-row items-center justify-between gap-4 bg-cardbg p-4 rounded-2xl border border-gold-500/20 shadow-xl">
+                <!-- Search Box -->
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+                    <input type="text" id="searchInput" onkeyup="filterFurniture()" placeholder="Search sofas, beds, tables..." class="w-full bg-amberbg text-gray-200 text-sm rounded-xl pl-10 pr-4 py-3 border border-gray-800 focus:outline-none focus:border-gold-500 transition-colors">
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="flex items-center space-x-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none">
+                    <button onclick="setCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-gold-gradient text-black whitespace-nowrap">All</button>
+                    <button onclick="setCategory('living')" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-amberbg border border-gray-800 text-gray-300 hover:border-gold-500/50 whitespace-nowrap">Living Room</button>
+                    <button onclick="setCategory('bedroom')" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-amberbg border border-gray-800 text-gray-300 hover:border-gold-500/50 whitespace-nowrap">Bedroom</button>
+                    <button onclick="setCategory('dining')" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-amberbg border border-gray-800 text-gray-300 hover:border-gold-500/50 whitespace-nowrap">Dining</button>
+                    <button onclick="setCategory('office')" class="cat-btn px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider bg-amberbg border border-gray-800 text-gray-300 hover:border-gold-500/50 whitespace-nowrap">Office</button>
+                </div>
+            </div>
+
+            <!-- Furniture Gallery Grid (9 High Quality Furniture Items) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="furnitureGrid">
+
+                <!-- Item 1: Chesterfield Sofa -->
+                <div class="furniture-card living bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Royal Chesterfield Leather Sofa Set" data-category="Living Room" data-material="Premium Italian Leatherette & Seasoned Teakwood" data-finish="Hand-Tufted Vintage Gold Antique" data-img="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" alt="Royal Chesterfield Leather Sofa Set" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Living Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Royal Chesterfield Leather Sofa</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Hand-tufted plush cushioning with seasoned teak framework and antique brass rivet details.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Direct Factory Rate</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Teak Hydraulic Bed -->
+                <div class="furniture-card bedroom bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Emperor Teak Wood Hydraulic Storage Bed" data-category="Bedroom" data-material="100% Grade-A CP Teakwood & German Hydraulic Springs" data-finish="Warm Walnut Melamine Gloss" data-img="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" alt="Teak Wood Hydraulic Storage Bed" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Bedroom</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Emperor Teak Hydraulic Bed</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">King-size luxury upholstered bed featuring heavy hydraulic lift storage and padded headboard.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Request Wholesale Price</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Italian Marble Dining Table -->
+                <div class="furniture-card dining bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Grand 8-Seater Italian Marble Dining Set" data-category="Dining" data-material="Imported Carrara Marble Top & Solid Teak Pedestal" data-finish="High Gloss Marble Polish with Velvet Dining Chairs" data-img="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80" alt="Italian Marble Dining Set" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Dining</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Italian Marble 8-Seater Dining</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Exquisite natural veined Italian marble tabletop supported by heavy hand-carved teak legs.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Get Instant Quote</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: L-Shape Velvet Lounger -->
+                <div class="furniture-card living bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Imperial Velvet L-Shape Modular Lounger" data-category="Living Room" data-material="High Density 40-Density Sleepwell Foam & Regal Velvet" data-finish="Deep Royal Blue / Gold Accents" data-img="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80" alt="L-Shape Velvet Lounger" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Living Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Velvet L-Shape Sectional Lounge</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Deep luxury lounge seating with customizable chaise left/right configurations and plush cushions.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Direct Factory Rate</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Sliding Wardrobe -->
+                <div class="furniture-card bedroom bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Master Bedroom Mirror Sliding Wardrobe" data-category="Bedroom" data-material="Marine Grade HDMR Board & Tinted Mirror Panels" data-finish="Soft-Close Soft Satin Champagne Gold" data-img="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80" alt="Sliding Wardrobe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Bedroom</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Custom Sliding Mirror Wardrobe</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Modular internal organizers, integrated sensor LED lights, and smooth floor-to-ceiling sliding track.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Request Wholesale Price</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: TV Unit Console -->
+                <div class="furniture-card living bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Contemporary Floating TV Console & Wall Panel" data-category="Living Room" data-material="Fluted Teak Wood Panels & Italian Marble Backdrop" data-finish="Natural Teak Oil & Concealed Warm LED Strip" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="TV Console Furniture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Living Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Fluted Wood TV Entertainment Unit</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Sleek floating wall-mounted storage console with acoustic wooden slats and hidden wire conduits.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Get Instant Quote</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 7: Modern Accent Armchair -->
+                <div class="furniture-card living bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Royal Gold Leaf Wingback Accent Chair" data-category="Living Room" data-material="Solid Teak Wood Carved Frame & Jacquard Fabric" data-finish="24K Antique Gold Leafing Finish" data-img="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" alt="Accent Armchair" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Living Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Royal Gold Leaf Wingback Chair</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Handcrafted single-seater armchair featuring hand-carved baroque accents and high ergonomic back support.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Direct Factory Rate</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 8: Executive Wooden Desk -->
+                <div class="furniture-card office bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Presidential Teakwood Executive Desk" data-category="Office" data-material="Heavy Sheesham / Teak Wood with Brass Fittings" data-finish="Hand-Rubbed Dark Mahogany Wax Polish" data-img="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&w=800&q=80" alt="Executive Wood Desk" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Office</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Presidential Executive Desk</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Commanding solid wood director desk with leatherette inlaid writing top and lockable drawers.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Request Wholesale Price</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 9: Carved Coffee Table -->
+                <div class="furniture-card living bg-cardbg rounded-2xl overflow-hidden border border-cardborder hover:border-gold-500/50 transition-all duration-500 group shadow-lg" data-title="Heritage Carved Teak Coffee Table" data-category="Living Room" data-material="Seasoned Sagwan Teakwood & Toughened Glass Top" data-finish="Honey Gloss Teak Grain" data-img="https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?auto=format&fit=crop&w=800&q=80">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532323544230-7191fd51bc1b?auto=format&fit=crop&w=800&q=80" alt="Carved Coffee Table" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <span class="absolute top-4 left-4 bg-black/80 backdrop-blur-md text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md border border-gold-500/30">Living Room</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold-400 transition-colors">Heritage Carved Teak Coffee Table</h3>
+                        <p class="text-xs text-gray-400 mt-2 line-clamp-2">Intricately floral carved center table featuring lower storage shelf and bevel-edged clear glass top.</p>
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <span class="inline-block bg-gold-500/10 text-gold-400 text-xs font-bold px-3 py-1 rounded-full border border-gold-500/20">Get Instant Quote</span>
+                            <button onclick="openModal(this)" class="text-xs text-gold-400 font-semibold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
+                                View Specs <i class="fa-solid fa-chevron-right ml-1 text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE BESPOKE FURNITURE PRICE & MATERIAL ESTIMATOR TOOL -->
+    <section id="estimator" class="py-24 bg-cardbg border-y border-gold-500/20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 gsap-reveal">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-widest">Instant WhatsApp Customization Tool</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
+                    Bespoke Furniture Cost & Spec Estimator
+                </h2>
+                <p class="text-gray-400 text-sm mt-3">Configure your room, preferred timber grade, and finish to generate an instant estimate sent to 9871050579.</p>
+            </div>
+
+            <!-- Interactive Form Card -->
+            <div class="bg-amberbg p-6 sm:p-10 rounded-3xl border border-gold-500/30 gold-glow shadow-2xl gsap-reveal">
+                <form id="estimatorForm" onsubmit="calculateAndSendQuote(event)" class="space-y-8">
+                    <!-- Step 1: Room Category -->
+                    <div>
+                        <label class="block text-gold-400 font-semibold text-sm uppercase tracking-wider mb-4">1. Select Room / Project Type</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="roomType" value="Full Living Room Setup" class="peer hidden" checked>
+                                <div class="p-4 rounded-xl border border-gray-800 bg-cardbg text-center peer-checked:border-gold-500 peer-checked:bg-gold-500/10 transition-all">
+                                    <i class="fa-solid fa-couch text-2xl text-gold-400 mb-2"></i>
+                                    <span class="block text-xs font-semibold text-gray-200">Living Room</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="roomType" value="Master Bedroom Suite" class="peer hidden">
+                                <div class="p-4 rounded-xl border border-gray-800 bg-cardbg text-center peer-checked:border-gold-500 peer-checked:bg-gold-500/10 transition-all">
+                                    <i class="fa-solid fa-bed text-2xl text-gold-400 mb-2"></i>
+                                    <span class="block text-xs font-semibold text-gray-200">Master Bedroom</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="roomType" value="Royal Dining Suite" class="peer hidden">
+                                <div class="p-4 rounded-xl border border-gray-800 bg-cardbg text-center peer-checked:border-gold-500 peer-checked:bg-gold-500/10 transition-all">
+                                    <i class="fa-solid fa-utensils text-2xl text-gold-400 mb-2"></i>
+                                    <span class="block text-xs font-semibold text-gray-200">Dining Area</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="roomType" value="Complete Villa Furnishing" class="peer hidden">
+                                <div class="p-4 rounded-xl border border-gray-800 bg-cardbg text-center peer-checked:border-gold-500 peer-checked:bg-gold-500/10 transition-all">
+                                    <i class="fa-solid fa-house-chimney text-2xl text-gold-400 mb-2"></i>
+                                    <span class="block text-xs font-semibold text-gray-200">Entire Villa</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Wood Material Grade -->
+                    <div>
+                        <label class="block text-gold-400 font-semibold text-sm uppercase tracking-wider mb-4">2. Select Primary Timber / Wood Material</label>
+                        <select id="woodSelect" class="w-full bg-cardbg border border-gray-800 rounded-xl px-4 py-3.5 text-gray-200 text-sm focus:outline-none focus:border-gold-500 transition-colors">
+                            <option value="100% Grade-A Seasoned Sagwan Teak Wood">100% Grade-A Seasoned Sagwan Teak Wood (Lifetime Durability)</option>
+                            <option value="Premium Grade Sheesham Wood (Rosewood)">Premium Grade Sheesham Wood (Deep Grain Finish)</option>
+                            <option value="High Density HDMR Marine Ply with Veneer">High Density HDMR Marine Ply with Teak Veneer</option>
+                            <option value="Italian Marble Top with Solid Wooden Base">Italian Marble Top with Solid Wooden Base</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 3: Specific Custom Requirements -->
+                    <div>
+                        <label class="block text-gold-400 font-semibold text-sm uppercase tracking-wider mb-2">3. Room Dimensions / Special Design Requirements</label>
+                        <textarea id="customNotes" rows="3" placeholder="e.g. 7-seater sofa in dark emerald velvet, 6x6.5 ft hydraulic bed, walnut polish..." class="w-full bg-cardbg border border-gray-800 rounded-xl px-4 py-3 text-gray-200 text-sm focus:outline-none focus:border-gold-500 transition-colors"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full py-4 rounded-xl bg-gold-gradient text-black font-bold text-sm tracking-widest uppercase hover:scale-[1.01] transition-transform gold-glow flex items-center justify-center">
+                        <i class="fa-brands fa-whatsapp text-xl mr-2"></i>
+                        <span>Generate & Send Quote to 9871050579</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACTORY DIRECT MANUFACTURING & SHOWROOM LOCATION -->
+    <section id="factory" class="py-24 relative border-b border-gold-500/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Info Column -->
+                <div class="space-y-6 gsap-reveal">
+                    <div class="inline-flex items-center space-x-2 text-gold-400 text-xs font-semibold uppercase tracking-widest">
+                        <i class="fa-solid fa-industry"></i>
+                        <span>In-House Craftsmanship</span>
+                    </div>
+
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white">
+                        Direct In-House <br>
+                        <span class="text-gold-gradient">Manufacturing Workshop</span>
+                    </h2>
+
+                    <p class="text-gray-300 font-light leading-relaxed">
+                        By manufacturing directly in our Faridabad factory unit, we eliminate agent markups, showroom franchise taxes, and middleman commissions. You get handcrafted solid furniture made from genuine seasoned logs at direct factory rates.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4 bg-cardbg p-4 rounded-xl border border-cardborder">
+                            <div class="p-3 bg-gold-500/10 text-gold-400 rounded-lg">
+                                <i class="fa-solid fa-location-dot text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Factory & Showroom Address</h4>
+                                <p class="text-xs text-gray-400 mt-1">
+                                    SCF 37-38, New Baselwa Colony, Opp. Sector 29, Main Badkal Road, Faridabad, Haryana
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 bg-cardbg p-4 rounded-xl border border-cardborder">
+                            <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-lg">
+                                <i class="fa-solid fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm">Direct Contact Helpline</h4>
+                                <p class="text-xs text-gray-400 mt-1">
+                                    Single Official Number: <a href="tel:9871050579" class="text-gold-400 font-bold hover:underline">9871050579</a> (Call or WhatsApp)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <button onclick="openBookingModal()" class="px-6 py-3.5 rounded-full bg-gold-gradient text-black font-bold text-xs uppercase tracking-wider hover:shadow-lg">
+                            Schedule Factory Visit
+                        </button>
+                        <a href="https://wa.me/919871050579?text=Hello!%20Please%20share%20the%20exact%20Google%20Maps%20location%20of%20Om%20Furniture." target="_blank" class="px-6 py-3.5 rounded-full bg-cardbg border border-gold-500/40 text-gold-300 font-semibold text-xs uppercase tracking-wider hover:text-white">
+                            Get Google Map Location
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Showroom Image Display -->
+                <div class="relative gsap-reveal">
+                    <div class="rounded-3xl overflow-hidden border-2 border-gold-500/30 gold-glow shadow-2xl relative group">
+                        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="Om Furniture Showroom" class="w-full h-[450px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-6 bg-black/70 backdrop-blur-md rounded-2xl border border-gold-500/30">
+                            <span class="text-gold-400 text-xs font-bold uppercase tracking-widest block">Open 7 Days a Week</span>
+                            <h3 class="text-white font-serif text-xl font-bold mt-1">Om Furniture Experience Center</h3>
+                            <p class="text-xs text-gray-300 mt-1">Visit us to inspect raw teakwood blocks, fabric swatches, and live manufacturing processes.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS CAROUSEL SECTION -->
+    <section class="py-24 bg-cardbg/40 border-b border-gold-500/20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 gsap-reveal">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-widest">Patron Trust</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
+                    What Our Esteemed Clients Say
+                </h2>
+                <div class="w-20 h-[2px] bg-gold-gradient mx-auto my-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-cardbg p-8 rounded-2xl border border-cardborder hover:border-gold-500/40 transition-all space-y-4 shadow-xl">
+                    <div class="flex text-gold-400 space-x-1 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+                        "Ordered a complete 100% teakwood bedroom suite for our new villa in Sector 14, Faridabad. Mr. Mohit Jain personally verified timber seasoning. The finish is truly royal!"
+                    </p>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Rajesh Sharma</h4>
+                            <span class="text-[10px] text-gray-500 uppercase">Faridabad Resident</span>
+                        </div>
+                        <i class="fa-solid fa-quote-right text-2xl text-gold-500/20"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-cardbg p-8 rounded-2xl border border-cardborder hover:border-gold-500/40 transition-all space-y-4 shadow-xl">
+                    <div class="flex text-gold-400 space-x-1 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+                        "The direct factory price difference is unbelievable compared to high-end Delhi showrooms. Built us a custom 8-seater Italian marble dining table with solid teak legs."
+                    </p>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Dr. Anita Verma</h4>
+                            <span class="text-[10px] text-gray-500 uppercase">Greater Kailash, Delhi</span>
+                        </div>
+                        <i class="fa-solid fa-quote-right text-2xl text-gold-500/20"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-cardbg p-8 rounded-2xl border border-cardborder hover:border-gold-500/40 transition-all space-y-4 shadow-xl">
+                    <div class="flex text-gold-400 space-x-1 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-300 italic leading-relaxed">
+                        "Extremely prompt WhatsApp support on 9871050579. Got our custom Chesterfield sectional delivered ahead of schedule. Unmatched wood carving quality!"
+                    </p>
+                    <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                        <div>
+                            <h4 class="text-white text-sm font-bold">Vikramaditya Roy</h4>
+                            <span class="text-[10px] text-gray-500 uppercase">Gurugram</span>
+                        </div>
+                        <i class="fa-solid fa-quote-right text-2xl text-gold-500/20"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ ACCORDION SECTION -->
+    <section id="faq" class="py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 gsap-reveal">
+                <span class="text-gold-400 text-xs font-bold uppercase tracking-widest">Clear & Transparent</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white mt-2">
+                    Frequently Asked Questions
+                </h2>
+                <div class="w-20 h-[2px] bg-gold-gradient mx-auto my-4"></div>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="bg-cardbg rounded-2xl border border-cardborder overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between text-white font-semibold text-base sm:text-lg focus:outline-none">
+                        <span>What wood grades do you use in furniture production?</span>
+                        <i class="fa-solid fa-plus text-gold-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
+                        We specialize in 100% Grade-A Seasoned Sagwan Teakwood (CP Teak) and high-density Sheesham. Every log is treated for termite protection and moisture-controlled to prevent cracking across weather seasons.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-cardbg rounded-2xl border border-cardborder overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between text-white font-semibold text-base sm:text-lg focus:outline-none">
+                        <span>Why are prices not displayed directly on the website?</span>
+                        <i class="fa-solid fa-plus text-gold-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
+                        Because every piece of Om Furniture is fully bespoke—tailored to your exact dimensions, choice of Italian marble, fabric grades, and polish shades. Contact us on WhatsApp (9871050579) for an immediate, transparent wholesale quote.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-cardbg rounded-2xl border border-cardborder overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between text-white font-semibold text-base sm:text-lg focus:outline-none">
+                        <span>Can I visit the workshop to see raw materials before ordering?</span>
+                        <i class="fa-solid fa-plus text-gold-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
+                        Absolutely! We encourage clients to visit our factory showroom at SCF 37-38, New Baselwa Colony, Opp. Sector 29, Main Badkal Road, Faridabad. You can inspect raw unpolished wood structures and select fabrics in person.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-cardbg rounded-2xl border border-cardborder overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between text-white font-semibold text-base sm:text-lg focus:outline-none">
+                        <span>Do you deliver across Delhi NCR and India?</span>
+                        <i class="fa-solid fa-plus text-gold-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-xs sm:text-sm text-gray-400 leading-relaxed border-t border-gray-800/50 pt-4">
+                        Yes, we provide safe white-glove transport and installation across Delhi, Faridabad, Gurugram, Noida, and all major cities nationwide with specialized protective furniture blankets.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (NO INSTAGRAM REFERENCES, SINGLE PHONE NUMBER 9871050579) -->
+    <footer class="bg-cardbg border-t border-gold-500/20 pt-16 pb-12 text-gray-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-gold-gradient p-[2px]">
+                            <div class="w-full h-full bg-amberbg rounded-full flex items-center justify-center">
+                                <span class="font-serif font-bold text-gold-400 text-lg">OM</span>
+                            </div>
+                        </div>
+                        <span class="font-serif text-xl font-bold text-white">OM FURNITURE</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">
+                        Handcrafted royal teakwood furniture and bespoke architectural woodwork established in 1997 by Mr. Mohit Jain.
+                    </p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <!-- Facebook & WhatsApp Only - Strictly NO Instagram -->
+                        <a href="https://wa.me/919871050579" target="_blank" class="w-9 h-9 rounded-full bg-amberbg border border-gray-800 flex items-center justify-center text-emerald-400 hover:border-emerald-500 transition-colors">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                        </a>
+                        <a href="tel:9871050579" class="w-9 h-9 rounded-full bg-amberbg border border-gray-800 flex items-center justify-center text-gold-400 hover:border-gold-500 transition-colors">
+                            <i class="fa-solid fa-phone text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-gold-500/20 pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#about" class="hover:text-gold-400 transition-colors">Our Legacy (Estd. 1997)</a></li>
+                        <li><a href="#collection" class="hover:text-gold-400 transition-colors">Royal Furniture Collection</a></li>
+                        <li><a href="#estimator" class="hover:text-gold-400 transition-colors">WhatsApp Customization Tool</a></li>
+                        <li><a href="#factory" class="hover:text-gold-400 transition-colors">Factory Direct Benefits</a></li>
+                    </ul>
+                </div>
+
+                <!-- Product Categories -->
+                <div>
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-gold-500/20 pb-2 inline-block">Bespoke Categories</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#collection" class="hover:text-gold-400 transition-colors">Chesterfield Leather Sofas</a></li>
+                        <li><a href="#collection" class="hover:text-gold-400 transition-colors">Teak Hydraulic Beds</a></li>
+                        <li><a href="#collection" class="hover:text-gold-400 transition-colors">Italian Marble Dining Tables</a></li>
+                        <li><a href="#collection" class="hover:text-gold-400 transition-colors">Executive Office Desks</a></li>
+                    </ul>
+                </div>
+
+                <!-- Single Phone & Address Policy -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4 border-b border-gold-500/20 pb-2 inline-block">Factory Contact</h4>
+                    <p class="flex items-start space-x-2">
+                        <i class="fa-solid fa-location-dot text-gold-400 mt-0.5"></i>
+                        <span>SCF 37-38, New Baselwa Colony, Opp. Sector 29, Main Badkal Road, Faridabad, Haryana</span>
+                    </p>
+                    <p class="flex items-center space-x-2">
+                        <i class="fa-solid fa-phone text-gold-400"></i>
+                        <span>Phone / Call: <strong class="text-white">9871050579</strong></span>
+                    </p>
+                    <p class="flex items-center space-x-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                        <span>WhatsApp Direct: <strong class="text-white">9871050579</strong></span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>© 1997 - 2026 Om Furniture. All Rights Reserved. Founded by Mr. Mohit Jain.</p>
+                <p class="text-gold-400/70">Crafted with Precision • 100% Pure Furniture Masterpieces</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE FURNITURE SPECS MODAL POPUP -->
+    <div id="specsModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity">
+        <div class="bg-cardbg border border-gold-500/40 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl gold-glow overflow-y-auto max-h-[90vh]">
+            <button onclick="closeModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gold-400 text-2xl focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex flex-col sm:flex-row gap-6 items-center mb-6">
+                <img id="modalImg" src="" alt="Furniture Preview" class="w-full sm:w-48 h-48 object-cover rounded-2xl border border-gold-500/30">
+                <div>
+                    <span id="modalCat" class="text-gold-400 text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-gold-500/10 rounded-md border border-gold-500/20 inline-block mb-2">Category</span>
+                    <h3 id="modalTitle" class="font-serif text-2xl font-bold text-white">Furniture Title</h3>
+                    <p class="text-xs text-gray-400 mt-2">Customized dimensions and finishes available directly from our workshop.</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 border-t border-gray-800 pt-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-amberbg p-3.5 rounded-xl border border-gray-800">
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Material Composition</span>
+                        <span id="modalMaterial" class="text-xs font-semibold text-white">Timber Details</span>
+                    </div>
+                    <div class="bg-amberbg p-3.5 rounded-xl border border-gray-800">
+                        <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Polish / Finish</span>
+                        <span id="modalFinish" class="text-xs font-semibold text-white">Finish Details</span>
+                    </div>
+                </div>
+
+                <div class="bg-amberbg p-3.5 rounded-xl border border-gray-800">
+                    <span class="text-[10px] text-gray-400 uppercase tracking-widest block">Price Guarantee</span>
+                    <span class="text-xs font-semibold text-gold-400">Direct Factory Wholesale Rate (No Middlemen Commission)</span>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                <a id="modalWaBtn" href="#" target="_blank" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs uppercase tracking-wider text-center transition-colors flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-lg mr-2"></i>
+                    Order on WhatsApp (9871050579)
+                </a>
+                <a href="tel:9871050579" class="w-full py-3.5 rounded-xl bg-cardbg border border-gold-500/40 text-gold-300 hover:text-white text-xs font-bold uppercase tracking-wider text-center transition-colors flex items-center justify-center">
+                    <i class="fa-solid fa-phone mr-2"></i>
+                    Call 9871050579
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHOWROOM VISIT BOOKING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="bg-cardbg border border-gold-500/40 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl gold-glow">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 text-gray-400 hover:text-gold-400 text-2xl focus:outline-none">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <i class="fa-solid fa-store text-3xl text-gold-400 mb-2"></i>
+                <h3 class="font-serif text-2xl font-bold text-white">Book Factory Visit</h3>
+                <p class="text-xs text-gray-400 mt-1">SCF 37-38, New Baselwa Colony, Main Badkal Road, Faridabad</p>
+            </div>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs text-gold-400 uppercase font-semibold mb-1">Your Full Name</label>
+                    <input type="text" id="bookName" required placeholder="Enter your name" class="w-full bg-amberbg border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-gold-400 uppercase font-semibold mb-1">Preferred Date</label>
+                    <input type="date" id="bookDate" required class="w-full bg-amberbg border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500">
+                </div>
+                <div>
+                    <label class="block text-xs text-gold-400 uppercase font-semibold mb-1">Items of Interest</label>
+                    <input type="text" id="bookItem" placeholder="e.g. Sofa set, Hydraulic bed..." class="w-full bg-amberbg border border-gray-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-gold-500">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-gold-gradient text-black font-bold text-xs uppercase tracking-widest gold-glow hover:scale-[1.01] transition-transform">
+                    Confirm Visit via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC & GSAP ANIMATIONS -->
+    <script>
+        // Register GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('menuBtn').addEventListener('click', toggleMobileMenu);
+
+        // Floating Gold Particles Canvas Animation
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.alpha = Math.random() * 0.6 + 0.2;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push(new Particle());
+            }
+        }
+        initParticles();
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // GSAP Scroll-driven Animations
+        window.addEventListener('DOMContentLoaded', () => {
+            // Hero section stagger reveal
+            gsap.from('.hero-anim', {
+                opacity: 0,
+                y: 40,
+                duration: 1.2,
+                stagger: 0.2,
+                ease: 'power3.out'
+            });
+
+            // Section reveal elements
+            gsap.utils.toArray('.gsap-reveal').forEach(element => {
+                gsap.from(element, {
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 85%',
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 1,
+                    ease: 'power2.out'
+                });
+            });
+        });
+
+        // Search & Category Filter Logic
+        function setCategory(cat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-gradient', 'text-black');
+                btn.classList.add('bg-amberbg', 'text-gray-300');
+            });
+            event.target.classList.remove('bg-amberbg', 'text-gray-300');
+            event.target.classList.add('bg-gold-gradient', 'text-black');
+
+            const cards = document.querySelectorAll('.furniture-card');
+            cards.forEach(card => {
+                if (cat === 'all' || card.classList.contains(cat)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterFurniture() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.furniture-card');
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+                if (title.includes(query) || category.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Furniture Modal Logic
+        function openModal(button) {
+            const card = button.closest('.furniture-card');
+            const title = card.getAttribute('data-title');
+            const cat = card.getAttribute('data-category');
+            const material = card.getAttribute('data-material');
+            const finish = card.getAttribute('data-finish');
+            const img = card.getAttribute('data-img');
+
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalCat').innerText = cat;
+            document.getElementById('modalMaterial').innerText = material;
+            document.getElementById('modalFinish').innerText = finish;
+            document.getElementById('modalImg').src = img;
+
+            const waText = encodeURIComponent(`Hello Om Furniture! I am interested in details and factory quote for: ${title}`);
+            document.getElementById('modalWaBtn').href = `https://wa.me/919871050579?text=${waText}`;
+
+            document.getElementById('specsModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('specsModal').classList.add('hidden');
+        }
+
+        // Showroom Booking Modal
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+        function submitBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('bookName').value;
+            const date = document.getElementById('bookDate').value;
+            const item = document.getElementById('bookItem').value;
+
+            const message = encodeURIComponent(`Hello Om Furniture! I would like to book a showroom/factory visit.\nName: ${name}\nDate: ${date}\nInterested in: ${item}`);
+            window.open(`https://wa.me/919871050579?text=${message}`, '_blank');
+            closeBookingModal();
+        }
+
+        // Bespoke Estimator Logic
+        function calculateAndSendQuote(e) {
+            e.preventDefault();
+            const room = document.querySelector('input[name="roomType"]:checked').value;
+            const wood = document.getElementById('woodSelect').value;
+            const notes = document.getElementById('customNotes').value;
+
+            const message = encodeURIComponent(`Hello Om Furniture (Mr. Mohit Jain)! I filled out the online estimator for a customized quote:\n- Project Type: ${room}\n- Timber/Material: ${wood}\n- Specifications: ${notes || 'Standard Dimensions'}\n\nPlease share estimated factory pricing.`);
+            window.open(`https://wa.me/919871050579?text=${message}`, '_blank');
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(btn) {
+            const content = btn.nextElementSibling;
+            const icon = btn.querySelector('i');
+            const isHidden = content.classList.contains('hidden');
+
+            document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+            document.querySelectorAll('#faqAccordion i').forEach(i => {
+                i.classList.remove('fa-minus');
+                i.classList.add('fa-plus');
+            });
+
+            if (isHidden) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            }
+        }
+    </script>
+</body>
+</html>
